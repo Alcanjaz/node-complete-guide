@@ -1,3 +1,5 @@
+const path = require('path');
+
 const express = require('express'); //import the express module
 const bodyParser = require('body-parser');
 
@@ -12,7 +14,7 @@ app.use('/admin', adminRoutes); //we can add a subpath to tell to express all th
 app.use(shopRoutes);
 
 app.use((req, res, next) => {
-    res.status(404).send("<h1>Page not found.</h1>");
+    res.status(404).sendFile(path.join(__dirname, 'views', 'error.html'));
 });
 
 app.listen(3000); 
