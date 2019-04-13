@@ -9,9 +9,13 @@ const app = express();
 const adminData = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 
-app.engine('hbs', expressHbs({layoutsDir: 'views/layouts/', defaultLayout: 'main-layout'}));
+app.engine('hbs', expressHbs({
+    layoutsDir: path.join(__dirname, 'views/layouts'),
+    defaultLayout: 'main-layout',
+    extname: '.hbs'
+}));
 app.set('view engine', 'hbs');
-app.set('views', 'views');
+app.set('views', path.join(__dirname, 'views'));
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
