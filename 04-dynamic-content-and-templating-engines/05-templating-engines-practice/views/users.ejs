@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title><%= docTitle%></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+
+    <% if(users.length > 0) {%>
+        <ul>
+            <% users.forEach(user => {%>
+                <li>
+                    <h2><%= user.name %></h2>
+                </li>
+            <% }) %>
+        </ul>
+    <% } else { %>
+        <h1>No users!</h1>
+    <% } %>
+    
+    </body>
+</html>
