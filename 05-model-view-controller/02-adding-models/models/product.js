@@ -1,4 +1,5 @@
-const products = []; //We are simulating a db
+const path = require('path');
+const fs = require('fs');
 
 
 //Export the class Product
@@ -8,11 +9,35 @@ module.exports = class Product {
     }
 
     save(){ //A class method that we can use when the class is instantiated   
-        products.push(this);
+        const p = path.join(
+            path.dirname(process.mainModule.filename), 
+            'data', 
+            'products.json'
+        );
+        fs.readFile(p, (err, fileContent) => {
+            let products = [];
+            if (!err) {
+                products = JSON.parse(fileContent);
+            }
+            products.push(this);
+            fs.writeFile(p, JSON.stringify(products), (err) => {
+                console.log(err);   
+            });
+        });
     }
 
-    static fetchAll(){ //A class method that we can use always as we need
-        return products;
+    static fetchAll(callback){ //A class method that we can use always as we need
+        const p = path.join(
+            path.dirname(process.mainModule.filename), 
+            'data', 
+            'products.json'
+        );
+        fs.readFile(p, (err, fileContent) => {
+            if (err) {
+               callback([]);
+            }
+            callback(JSON.parse(fileContent));
+        })
     }
 
 }
