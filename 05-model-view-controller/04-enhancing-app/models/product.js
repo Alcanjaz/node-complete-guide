@@ -19,8 +19,11 @@ const getProductsFromFile = cb => {
 
 //Export the class Product
 module.exports = class Product {
-    constructor(t){ //We create products with a title
-        this.title = t;
+    constructor(title, imageURL, description, price){ //We create products with a title
+        this.title = title;
+        this.imageURL = imageURL;
+        this.description = description;
+        this.price = price;
     }
 
     save(){ //A class method that we can use when the class is instantiated   

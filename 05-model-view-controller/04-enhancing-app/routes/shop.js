@@ -15,6 +15,9 @@ router.get('/cart', shopController.getCart);
 // products => GET
 router.get('/products', shopController.getProducts);
 
+// Orders => GET
+router.get('/orders', shopController.getOrders);
+
 // products => GET
 router.get('/checkout', shopController.getCheckout);
 

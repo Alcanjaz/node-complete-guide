@@ -8,14 +8,22 @@ exports.getAddProducts = (req, res, next) => {
 };
 
 exports.postAddProducts = (req, res, next) => {
-    const product = new Product(req.body.title);
-    product.save();
-    res.redirect('/');
-  };
+  const product = new Product(
+    req.body.title,
+    req.body.imageURL,
+    req.body.description,
+    req.body.price
+    );
+  product.save();
+  res.redirect('/');
+};
   
 exports.getAdminProducts = (req, res) => {
-  res.render("admin/products", {
-    pageTitle: 'Admin Products',
-    path: '/admin/products'
+  Product.fetchAll(products => {
+    res.render('admin/products', {
+      prods: products,
+      pageTitle: 'Products',
+      path: '/admin/products'
+    });
   });
 }
