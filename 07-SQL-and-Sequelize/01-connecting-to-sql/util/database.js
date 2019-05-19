@@ -21,4 +21,4 @@ const pool = mysql.createPool({
     password:'root'
 });
 
-module.exports = pool;
+module.exports = pool.promise();
