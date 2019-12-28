@@ -19,6 +19,11 @@ form {
   display: inline;
 }
 
+.flex--prior{
+  flex: 1;
+  text-align: center;
+}
+
 .centered {
   text-align: center;
 }
@@ -61,6 +66,7 @@ form {
 .main-header__item a {
   text-decoration: none;
   color: white;
+  transition: all .2s;
 }
 
 .main-header__item a:hover,
@@ -105,6 +111,7 @@ form {
   color: black;
   font-size: 1.5rem;
   padding: 0.5rem 2rem;
+  transition: all .2s;
 }
 
 .mobile-nav__item a:active,
@@ -113,6 +120,10 @@ form {
   background: #00695c;
   color: white;
   border-radius: 3px;
+}
+
+.margin-bottom--medium {
+  margin-bottom: 20px !important;
 }
 
 #side-menu-toggle {
@@ -197,6 +208,7 @@ form {
   background: white;
   border-radius: 3px;
   cursor: pointer;
+  transition: all .2s;
 }
 
 .btn:hover,
