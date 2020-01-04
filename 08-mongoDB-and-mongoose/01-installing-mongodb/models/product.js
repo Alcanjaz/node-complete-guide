@@ -1,5 +1,5 @@
 const getDatabase = require("../util/database").getDatabase;
-const mongodb = require('mongodb');
+const mongodb = require("mongodb");
 
 class Product {
   constructor(title, price, description, imageUrl) {
@@ -18,6 +18,20 @@ class Product {
       .then(products => {
         console.log(products);
         return products;
+      })
+      .catch(err => {
+        console.log(err);
+        throw err;
+      });
+  }
+
+  static updateById(id, updatedProduct) {
+    const database = getDatabase();
+
+    return database.collection('products')
+      .updateOne({ _id: new mongodb.ObjectID(id) }, {$set: updatedProduct})
+      .then(updatedRecord => {
+        return updatedRecord
       })
       .catch(err => {
         console.log(err);
