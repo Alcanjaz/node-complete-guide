@@ -28,10 +28,11 @@ class Product {
   static updateById(id, updatedProduct) {
     const database = getDatabase();
 
-    return database.collection('products')
-      .updateOne({ _id: new mongodb.ObjectID(id) }, {$set: updatedProduct})
+    return database
+      .collection("products")
+      .updateOne({ _id: new mongodb.ObjectID(id) }, { $set: updatedProduct })
       .then(updatedRecord => {
-        return updatedRecord
+        return updatedRecord;
       })
       .catch(err => {
         console.log(err);
@@ -52,6 +53,16 @@ class Product {
         console.log(err);
         throw err;
       });
+  }
+
+  static deleteById(prodID) {
+    const database = getDatabase();
+
+    return database
+      .collection("products")
+      .deleteOne({ _id: new mongodb.ObjectID(prodID) })
+      .then(() => console.log("deleted"))
+      .catch(err => console.log(err));
   }
 
   save() {
